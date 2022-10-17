@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muganiev <muganiev@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:43:12 by muganiev          #+#    #+#             */
-/*   Updated: 2022/10/16 18:21:59 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/10/17 15:57:09 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
-# include "minilibx/mlx.h"
+# include "./mlx/mlx.h"
 # include <fcntl.h>
 
 # define GROUND		"img/ground.xpm"

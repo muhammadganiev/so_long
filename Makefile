@@ -6,44 +6,57 @@
 #    By: muganiev <muganiev@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/07 16:43:30 by muganiev          #+#    #+#              #
-#    Updated: 2022/10/16 15:37:44 by muganiev         ###   ########.fr        #
+#    Updated: 2022/10/17 16:05:55 by muganiev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME		= so_long
 
-CFLAGS = -Wall -Werror -Wextra
+SRCS		= get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
+			so_long.c mandatory/parsing.c mandatory/parsing2.c mandatory/rendering.c \
+			mandatory/valid_exit.c mandatory/movement.c mandatory/movement2.c
 
-FLAGS = -crs
+OBJS		= $(SRCS:.c=.o)
 
-mlx = ./mlx/libmlx.a
+CCF			= gcc -Wall -Wextra -Werror
 
-FILES = ./src/mandatory/parsing/read_split.c ./src/mandatory/parsing/check_map1.c ./src/mandatory/parsing/check_map2.c\
-		./src/mandatory/drawnfree/draw.c ./src/mandatory/drawnfree/free.c\
-		./src/mandatory/init/initData.c ./src/mandatory/move/move.c\
-		so_long.c
+MAKEMLX		= cd minilibx && make
+MLX			= ./minilibx/libmlx.a
 
-OBJECTS = $(FILES:.c=.o)
+MAKELIBFT	= cd libft && make
+MAKEPRINTF	= cd ft_printf && make
 
-OBJECTS = $(FILES_BONUS:.c=.o)
+LIBFT		= libft/libft.a
+PRINTF		= ft_printf/libftprintf.a
 
-LIBFT = cd libft && make
+RM			= rm -f
 
-LIB = libft/libft.a
 
-$(NAME)	:
-		$(LIBFT)
-		make -C ./mlx
-		gcc $(CFLAGS) -o so_long $(FILES) $(LIB) $(mlx) -framework OpenGL -framework AppKit
+all: $(NAME)
 
-all : $(NAME)
+$(NAME): $(OBJS)
+	@$(MAKELIBFT)
+	@$(MAKEPRINTF)
+	@$(MAKEMLX)
+	@$(CCF) -o $(NAME) $(SRCS) $(LIBFT) $(PRINTF) $(MLX) -framework OpenGL -framework AppKit
 
-clean :
-		rm -f $(OBJS)
-		make clean -C mlx
+# MAKE -sC ./libft/
 
-fclean : clean
-		rm -f $(NAME)
-		make clean -C mlx
+%.o : %.c so_long.h
+	@$(CCF) -c $< -o $@
 
-re : fclean all
+clean:
+	@$(RM) $(OBJS) $(OBJS_B)
+	@$(MAKELIBFT) clean
+	@$(MAKEPRINTF) clean
+	@$(MAKEMLX) clean
+
+fclean: clean
+	@$(RM) $(NAME)
+	@$(MAKELIBFT) fclean
+	@$(MAKEPRINTF) fclean
+	@$(MAKEMLX) clean
+
+re: fclean all
+
+.PHONY: all clean fclean re libft ft_printf get_next_line
