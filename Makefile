@@ -6,7 +6,7 @@
 #    By: muganiev <muganiev@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/07 16:43:30 by muganiev          #+#    #+#              #
-#    Updated: 2022/10/17 16:05:55 by muganiev         ###   ########.fr        #
+#    Updated: 2022/10/21 19:48:48 by muganiev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ OBJS		= $(SRCS:.c=.o)
 
 CCF			= gcc -Wall -Wextra -Werror
 
-MAKEMLX		= cd minilibx && make
-MLX			= ./minilibx/libmlx.a
+MAKEMLX		= cd mlx && make
+MLX			= ./mlx/libmlx.a
 
 MAKELIBFT	= cd libft && make
 MAKEPRINTF	= cd ft_printf && make

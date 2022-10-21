@@ -6,17 +6,17 @@
 /*   By: muganiev <muganiev@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:54:57 by muganiev          #+#    #+#             */
-/*   Updated: 2022/10/17 15:55:17 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/10/21 20:11:09 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_render_image(t_game *game, char *path, int x, int y)
+void	ft_img_render(t_game *game, char *path, int x, int y)
 {
 	int	size;
 
-	size = 100;
+	size = 64;
 	x = x * size;
 	y = y * size;
 	game->img = mlx_xpm_file_to_image(game->mlx, path, &size, &size);
@@ -27,28 +27,28 @@ void	ft_render_image(t_game *game, char *path, int x, int y)
 void	put_image_and_find_player(t_game *game, char c, int x, int y)
 {
 	if (c == '0')
-		ft_render_image(game, GROUND, x, y);
+		ft_img_render(game, GROUND, x, y);
 	if (c == '1')
 	{
-		ft_render_image(game, GROUND, x, y);
-		ft_render_image(game, WALL, x, y);
+		ft_img_render(game, GROUND, x, y);
+		ft_img_render(game, WALL, x, y);
 	}
 	if (c == 'P')
 	{
 		game->ppx = x;
 		game->ppy = y;
-		ft_render_image(game, GROUND, x, y);
-		ft_render_image(game, PLAYER2, x, y);
+		ft_img_render(game, GROUND, x, y);
+		ft_img_render(game, PLAYER, x, y);
 	}
 	if (c == 'C')
 	{
-		ft_render_image(game, GROUND, x, y);
-		ft_render_image(game, KEY, x, y);
+		ft_img_render(game, GROUND, x, y);
+		ft_img_render(game, COIN, x, y);
 	}
 	if (c == 'E')
 	{
-		ft_render_image(game, GROUND, x, y);
-		ft_render_image(game, EXIT, x, y);
+		ft_img_render(game, GROUND, x, y);
+		ft_img_render(game, EXIT, x, y);
 	}
 }
 

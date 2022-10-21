@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement2.h                                        :+:      :+:    :+:   */
+/*   movement2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muganiev <muganiev@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:04:05 by muganiev          #+#    #+#             */
-/*   Updated: 2022/10/17 16:04:08 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:02:58 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ void	ft_if_flag2_flag3_render(t_game *game, int next_x, int next_y)
 {
 	if (game->flag == 2)
 	{
-		ft_render_image(game, GROUND, next_x, next_y);
-		ft_render_image(game, PLAYER2, next_x, next_y);
-		ft_render_image(game, EXIT, game->ppx, game->ppy);
+		ft_img_render(game, GROUND, next_x, next_y);
+		ft_img_render(game, PLAYER, next_x, next_y);
+		ft_img_render(game, EXIT, game->ppx, game->ppy);
 		game->ppx = next_x;
 		game->ppy = next_y;
 		game->flag = 0;
 	}
 	if (game->flag == 3)
 	{
-		ft_render_image(game, EXIT, next_x, next_y);
-		ft_render_image(game, PLAYER2, next_x, next_y);
-		ft_render_image(game, EXIT, game->ppx, game->ppy);
+		ft_img_render(game, EXIT, next_x, next_y);
+		ft_img_render(game, PLAYER, next_x, next_y);
+		ft_img_render(game, EXIT, game->ppx, game->ppy);
 		game->ppx = next_x;
 		game->ppy = next_y;
 		game->flag = 1;
@@ -38,17 +38,17 @@ void	ft_render_move(t_game *game, int next_x, int next_y)
 {
 	if (game->flag == 0)
 	{
-		ft_render_image(game, GROUND, next_x, next_y);
-		ft_render_image(game, PLAYER2, next_x, next_y);
-		ft_render_image(game, GROUND, game->ppx, game->ppy);
+		ft_img_render(game, GROUND, next_x, next_y);
+		ft_img_render(game, PLAYER, next_x, next_y);
+		ft_img_render(game, GROUND, game->ppx, game->ppy);
 		game->ppx = next_x;
 		game->ppy = next_y;
 	}
 	if (game->flag == 1)
 	{
-		ft_render_image(game, EXIT, next_x, next_y);
-		ft_render_image(game, PLAYER2, next_x, next_y);
-		ft_render_image(game, GROUND, game->ppx, game->ppy);
+		ft_img_render(game, EXIT, next_x, next_y);
+		ft_img_render(game, PLAYER, next_x, next_y);
+		ft_img_render(game, GROUND, game->ppx, game->ppy);
 		game->ppx = next_x;
 		game->ppy = next_y;
 	}
